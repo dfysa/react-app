@@ -1,14 +1,18 @@
 import React from "react";
 import { Form, Input, Button, Card, Space, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import "./App.css";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
-const App = () => {
+const Login = () => {
+  const navigate = useNavigate();
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
+    // 这里添加登录逻辑
     console.log("登录信息:", values);
     message.success("登录成功！");
+    navigate("/");
   };
 
   return (
@@ -63,4 +67,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Login;
