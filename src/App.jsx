@@ -3,12 +3,21 @@ import { Form, Input, Button, Card, Space, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./App.css";
 
+// 简单的登录验证函数
+const validateLogin = (values) => {
+  // 这里可以添加更复杂的验证逻辑
+  return values.username === "admin" && values.password === "admin";
+};
+
 const App = () => {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    console.log("登录信息:", values);
-    message.success("登录成功！");
+    if (validateLogin(values)) {
+      message.success("登录成功！");
+    } else {
+      message.error("用户名或密码错误！");
+    }
   };
 
   return (
